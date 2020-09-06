@@ -1,0 +1,66 @@
+// Default Color
+$white: #ffffff !default;
+$black: #000000 !default;
+
+$grey: #777777 !default;
+$heading-text-color: #003f52;
+$gray-75: #566576;
+$gray-100: #38414B;
+
+// Base colors
+$primary-color: #0082AB !default;
+$secondary-color: #16817F !default;
+$blue: #03A9F4 !default;
+$royal-blue: #001E62 !default;
+$error-color: #F44336 !default;
+$success-color: #4CAF50 !default;
+$warning-color: #FBC02D !default;
+
+//Color Palette
+$colorMap: (
+  "white": (
+    "base": $white,
+    "dark": darken($white, 40%)
+  ),
+  "black": (
+    "base": $black,
+    "light": lighten($black, 20%)
+  ),
+  "primary": (
+    "base": $primary-color,
+    "dark": darken($primary-color, 10%),
+    "light": lighten($primary-color, 10%),
+    "shadow": rgba($primary-color, 0.2)
+  ),
+  "secondary": (
+    "base": $secondary-color,
+  ),
+  "danger": (
+    "base": $error-color,
+    "dark":darken($error-color, 10%),
+    "shadow": rgba($error-color, 0.2)
+  ),
+  "success": (
+    "base": $success-color,
+  ),
+  "blue": (
+    "base": $blue,
+    "royal": $royal-blue
+  ),
+  "warning" : (
+    "base" : $warning-color
+  ),
+  "grey": (
+    "base":$grey,
+    "stroke": #e7e8e9,
+    "input-bg": #f8f8f8,
+    "text": #131e29,
+    "text60": rgba(#131e29, 0.6),
+    "text36": rgba(#131e29, 0.36),
+    "progress-bar-default" : #EEEFF0,
+    "light": #D9DBDD,
+    "icon": #AAAEB2,
+    "stroke-light": #EEEFF0,
+    "dark":darken($grey, 10%)
+  )
+);

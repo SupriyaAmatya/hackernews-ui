@@ -1,10 +1,9 @@
 import React from 'react';
-import './App.css';
 
 function App() {
   return (
     <div className="App">
-      HackerNews UI
+     <h2>HackerNews UI</h2>
     </div>
   );
 }
