@@ -3,7 +3,7 @@ import API from '../../utils/API';
 
 import ListItem from './ListItem';
 
-class List extends Component {
+class StoryList extends Component {
   constructor(props) {
     super(props)
   
@@ -35,4 +35,4 @@ class List extends Component {
   }
 }
 
-export default List;
+export default StoryList;
