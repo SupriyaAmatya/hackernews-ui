@@ -20,7 +20,8 @@ class Details extends Component {
 
     this.props.location && this.props.location.state &&
       this.setState({
-        data: this.props.location.state.data
+        data: this.props.location.state.data,
+        isLoading: false,
       });
   }
 
@@ -30,7 +31,7 @@ class Details extends Component {
   }
 
   render() {
-    const { data, isOpen } = this.state;
+    const { data, isOpen} = this.state;
 
     Modal.setAppElement('#root');
     return (
