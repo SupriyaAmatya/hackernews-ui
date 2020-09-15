@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Details from './components/details/Details';
 
 import Header from './components/Header';
 import StoryList from './components/storyList/StoryList';
@@ -8,7 +9,10 @@ function App() {
   return (
      <BrowserRouter>
       <Header />
-      <Route exact path="/" component={StoryList} />
+      <Switch>
+        <Route exact path="/" component={StoryList} />
+        <Route exact path="/:storyId" component={Details} />
+      </Switch>
      </BrowserRouter>
   );
 }

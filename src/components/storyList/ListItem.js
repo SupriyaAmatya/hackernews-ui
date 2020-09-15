@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { FaComments, FaUser, FaStar } from 'react-icons/fa';
 import { IoIosTime } from 'react-icons/io'
 
@@ -35,7 +36,15 @@ class ListItem extends Component {
           isLoading ? <LoadingSkeleton /> : (
             <>
               <div className="story__title">
-                {data.title}
+                {/* {data.title} */}
+                <Link
+                  to={{
+                    pathname: `/${data.id}`,
+                    state: { data: data},
+                  }}
+                >
+                  {this.state.data.title}
+                </Link>
               </div>
               <div className="story__description row mx-0x">
                 <span className="story__comments col"><FaComments /> {data.kids ? data.kids.length : '0'} comments</span>

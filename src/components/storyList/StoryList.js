@@ -9,6 +9,7 @@ class StoryList extends Component {
   
     this.state = {
        storiesList: [],
+       isLoading: true,
     }
   }
   
@@ -19,14 +20,15 @@ class StoryList extends Component {
   getStoriesId = async () =>{
     await API.get('/topstories.json')
     .then((res) => {
-      this.setState({ storiesList: res.data})
+      this.setState({ storiesList: res.data, isLoading: false})
     });
   }
 
   render() {
     const { storiesList } = this.state;
     return (
-      <div className="list container">
+      <div className="list container" id="list">
+        {this.state.isLoading && <p>Loading...</p>}
         {
           storiesList.map(storyId => <ListItem id={storyId} key={storyId} /> )
         }

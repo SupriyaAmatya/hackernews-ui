@@ -1,0 +1,52 @@
+.ReactModal {
+  @include e(Overlay) {
+    position        : fixed;
+    top             : 0px;
+    left            : 0px;
+    right           : 0px;
+    bottom          : 0px;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
+  @include e(Content) {
+
+    position        : relative;
+    overflow-x      : hidden;
+    overflow-y      : scroll;
+    border          : 0;
+    outline         : 0;
+    background-color: #ffffff;
+    position        : absolute;
+    top             : 50%;
+    left            : 50%;
+    width           : 80%;
+    height          : 90vh;
+    border-radius   : 4px;
+    box-shadow      : 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 12px 28px rgba(0, 0, 0, 0.2), inset 0px 0px 1px rgba(255, 255, 255, 0.5);
+    transform       : translate(-50%, -50%);
+    transition      : all 500ms ease-in-out;
+  }
+}
+
+.modal {
+  @include e(heading) {
+    min-width       : 80px;
+    border-bottom   : 1px solid #DBE6F3;
+    display         : flex;
+    align-items     : center;
+    flex-direction  : column;
+    position        : sticky;
+    top             : 0;
+    left            : 0;
+    background-color: white;
+    z-index         : 100;
+    color: $primary-color;
+    &.story {
+      padding-right: 25px;
+    }
+  }
+
+  @include e(body){
+    padding: 20px;
+  }
+}

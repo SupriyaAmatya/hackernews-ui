@@ -1,0 +1,27 @@
+.comment-wrapper{
+  border-left: 4px solid rgb(224, 224, 224);
+  margin-bottom: 10px;
+  transition: all .1s ease-in-out;
+
+  .comment{
+    padding: 5px;
+    font-size: 15px;
+
+    @include e(child){
+      margin-left: 10px;
+    }
+
+    @include e(by){
+      font-weight: 500;
+    }
+    
+    @include e(text){
+      margin-left: 8px;
+      margin-top: 5px;
+    }
+  }
+
+  &:hover{
+    border-left: 4px solid $primary-color;
+  }
+}
