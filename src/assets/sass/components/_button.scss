@@ -1,26 +1,34 @@
-.btn{
-  border: 0;
-  outline: 0;
+.btn {
+  border          : 0;
+  outline         : 0;
   background-color: transparent;
-  transition: .2s ease-in-out;
-  cursor: pointer;
+  transition      : .2s ease-in-out;
+  cursor          : pointer;
 
-  @include m(close){
-    width: 30px;
-    height: 30px;
+  @include m(close) {
+    width        : 30px;
+    height       : 30px;
     border-radius: 50%;
-    border: 2px solid $secondary-color;
-    text-align: center;
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    font-weight: 500;
-    font-size: 16px;
-    color: $secondary-color;
-    z-index: 200;
-    &:hover{
+    border       : 2px solid $secondary-color;
+    text-align   : center;
+    position     : absolute;
+    top          : 8px;
+    right        : 8px;
+    font-weight  : 500;
+    font-size    : 16px;
+    color        : $secondary-color;
+    z-index      : 200;
+
+    &:hover {
       background-color: $secondary-color;
-      color: white;
+      color           : white;
+    }
+
+    @include mqmax(sm) {
+      width    : 24px;
+      height   : 24px;
+      right    : 2px;
+      font-size: 12px;
     }
   }
 }

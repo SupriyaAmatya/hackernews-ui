@@ -5,7 +5,7 @@ import { IoIosTime } from 'react-icons/io'
 
 import API from '../../utils/API';
 import formateDate from '../../utils/formateDate';
-import LoadingSkeleton from '../loadingSkeleton/LoadingSkeleton';
+import LoadingSkeleton from '../loading/LoadingSkeleton';
 
 class ListItem extends Component {
   constructor(props) {
@@ -19,6 +19,13 @@ class ListItem extends Component {
 
   componentDidMount() {
     this.getStory(this.props.id);
+  }
+
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state, callback) => {
+      return;
+    };
   }
 
   getStory = async (id) => {
@@ -40,7 +47,7 @@ class ListItem extends Component {
                 <Link
                   to={{
                     pathname: `/${data.id}`,
-                    state: { data: data},
+                    state: { data: data },
                   }}
                 >
                   {data.title}

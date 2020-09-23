@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import { FaComments, FaUser, FaStar } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 import Comment from './Comment';
+import NoComment from './NoComment';
 
 class Details extends Component {
   constructor(props) {
@@ -17,21 +18,26 @@ class Details extends Component {
 
   componentDidMount() {
     this.setState({ isOpen: true });
+    if (this.state.isOpen) {
+      document.body.style.overflow = 'hidden';
+    }
 
     this.props.location && this.props.location.state &&
       this.setState({
         data: this.props.location.state.data,
-        isLoading: false,
       });
   }
 
   closeModal = () => {
     this.setState({ isOpen: false });
     this.props.history.goBack();
+    document.body.style.overflow = 'unset'
   }
 
+  disableScroll = () => document.body.style.overflow = 'hidden'
+
   render() {
-    const { data, isOpen} = this.state;
+    const { data, isOpen } = this.state;
 
     Modal.setAppElement('#root');
     return (
@@ -40,6 +46,7 @@ class Details extends Component {
         onRequestClose={this.closeModal}
         className="ReactModal"
         overlayClassName="Overlay"
+        onAfterOpen={this.disableScroll}
       >
         <div className="modal__heading story">
           <button onClick={this.closeModal} className="btn btn--close">X</button>
@@ -54,10 +61,10 @@ class Details extends Component {
           </div>
         </div>
         <div className="modal__body">
-          <h4 className="mb-8x">{data.kids ? data.kids.length : '0'} Comments</h4>
-          {
-            data.kids && data.kids.length > 0 ?
-              <Comment id={data.id} /> : <p>No comment</p>
+          {data.kids && <h4>{data.kids.length} Comments</h4>}
+          {data.kids && data.kids.length > 0 ?
+              <Comment id={data.id} /> 
+              : <NoComment />
           }
         </div>
       </Modal>

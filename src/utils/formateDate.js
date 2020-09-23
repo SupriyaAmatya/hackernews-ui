@@ -1,6 +1,6 @@
 /**
  * Format date
- * @param {string}
+ * @param {number}
  * @returns {string}
  */
 export function formatDate(dateTime) {
