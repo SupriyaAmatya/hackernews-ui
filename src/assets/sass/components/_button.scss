@@ -31,4 +31,19 @@
       font-size: 12px;
     }
   }
+
+  @include m(comment){
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid $secondary-color;
+    background-color: $secondary-color;
+    color: white;
+    margin: 10px auto;
+    transition: .3s ease-in-out;
+
+    &:hover{
+      background-color: darken($color: $secondary-color, $amount: 10);
+    }
+  }
 }

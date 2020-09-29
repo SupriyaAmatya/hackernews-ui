@@ -10,7 +10,7 @@ function App() {
      <BrowserRouter>
       <Header />
       <Route path="/" component={StoryList} />
-      <Route exact path="/:storyId" component={Details} />
+      <Route exact path="/stories/:storyId" component={Details} />
      </BrowserRouter>
   );
 }

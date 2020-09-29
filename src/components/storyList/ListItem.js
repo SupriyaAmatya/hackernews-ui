@@ -46,7 +46,7 @@ class ListItem extends Component {
               <div className="story__title">
                 <Link
                   to={{
-                    pathname: `/${data.id}`,
+                    pathname: `/stories/${data.id}`,
                     state: { data: data },
                   }}
                 >

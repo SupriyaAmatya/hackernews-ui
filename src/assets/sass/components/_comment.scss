@@ -7,11 +7,11 @@
 
     @include e(child) {
       margin-left: 15px;
-      border-left: 4px solid rgb(224, 224, 224);
+      border-left: 3px solid rgb(224, 224, 224);
       transition : all .1s ease-in-out;
 
       &:hover {
-        border-left: 4px solid $primary-color;
+        border-left: 3px solid $primary-color;
       }
     }
 
@@ -24,4 +24,11 @@
       margin-top : 5px;
     }
   }
+}
+
+.parent-comments{
+  border: 1px solid rgb(202, 202, 202);
+  border-radius: 5px;
+  margin: 15px 0;
+  padding: 10px;
 }

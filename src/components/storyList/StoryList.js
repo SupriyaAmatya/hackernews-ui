@@ -13,7 +13,7 @@ class StoryList extends Component {
       storiesList: [],
       isLoading: true,
       currentPage: 1,
-      storyPerPage: 10,
+      storyPerPage: 6,
     }
   }
 

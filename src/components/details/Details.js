@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Modal from 'react-modal';
 
-import { FaComments, FaUser, FaStar } from 'react-icons/fa';
+import Modal from 'react-modal';
 import { FiExternalLink } from 'react-icons/fi';
+import { FaComments, FaUser, FaStar } from 'react-icons/fa';
+
 import Comment from './Comment';
 import NoComment from './NoComment';
 
@@ -62,9 +63,10 @@ class Details extends Component {
         </div>
         <div className="modal__body">
           {data.kids && <h4>{data.kids.length} Comments</h4>}
+
           {data.kids && data.kids.length > 0 ?
-              <Comment id={data.id} /> 
-              : <NoComment />
+            data.kids.map(id => <Comment id={id} className="parent-comments"/>)
+            : <NoComment />
           }
         </div>
       </Modal>

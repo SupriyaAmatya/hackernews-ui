@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const Pagination = (props) => {
   const { storyPerPage, totalStories, paginate, currentPage, windowSize } = props;
-
+console.log(totalStories);
   const pageNumbers = [];
   
-  const pages = Math.floor(totalStories / storyPerPage);
-  let maxLeft = (currentPage - Math.floor(windowSize / 2))
-  let maxRight = (currentPage + Math.floor(windowSize / 2))
+  const pages = Math.ceil(totalStories / storyPerPage);
+  let maxLeft = (currentPage - Math.ceil(windowSize / 2))
+  let maxRight = (currentPage + Math.ceil(windowSize / 2))
 
   if (maxLeft < 1) {
     maxLeft = 1
