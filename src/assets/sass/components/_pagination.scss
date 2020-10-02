@@ -1,0 +1,49 @@
+.pagination {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  margin         : 40px 0;
+
+  @include mqmax(sm){
+    display: none;
+  }
+
+  .page-item {
+    padding   : 8px 10px;
+    border    : 1px solid $primary-color;
+    margin    : 0 4px;
+    cursor    : pointer;
+    transition: all .2s ease-in-out;
+
+    a {
+      display    : flex;
+      align-items: center;
+    }
+
+    &:hover,
+    &.active-page {
+      background-color: $primary-color;
+
+      a {
+        color: white;
+      }
+    }
+  }
+
+  .page {
+    padding    : 8px 10px;
+    border     : 1px solid $primary-color;
+    margin     : 0 4px;
+    color      : $primary-color;
+    font-weight: 500;
+    cursor     : default;
+  }
+
+  &.mobile-view{
+    display: none;
+
+    @include mqmax(sm){
+      display: flex;
+    }
+  }
+}

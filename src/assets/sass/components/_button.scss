@@ -1,0 +1,49 @@
+.btn {
+  border          : 0;
+  outline         : 0;
+  background-color: transparent;
+  transition      : .2s ease-in-out;
+  cursor          : pointer;
+
+  @include m(close) {
+    width        : 30px;
+    height       : 30px;
+    border-radius: 50%;
+    border       : 2px solid $secondary-color;
+    text-align   : center;
+    position     : absolute;
+    top          : 8px;
+    right        : 8px;
+    font-weight  : 500;
+    font-size    : 16px;
+    color        : $secondary-color;
+    z-index      : 200;
+
+    &:hover {
+      background-color: $secondary-color;
+      color           : white;
+    }
+
+    @include mqmax(sm) {
+      width    : 24px;
+      height   : 24px;
+      right    : 2px;
+      font-size: 12px;
+    }
+  }
+
+  @include m(comment){
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid $secondary-color;
+    background-color: $secondary-color;
+    color: white;
+    margin: 10px auto;
+    transition: .3s ease-in-out;
+
+    &:hover{
+      background-color: darken($color: $secondary-color, $amount: 10);
+    }
+  }
+}

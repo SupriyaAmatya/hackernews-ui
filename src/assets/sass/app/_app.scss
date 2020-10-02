@@ -1,0 +1,80 @@
+.list {
+  margin-top: 120px;
+
+  @include e(item) {
+    margin          : 24px 0;
+    background-color: #ffffff;
+    border-radius   : 5px;
+    box-shadow      : 0 8px 6px -6px rgba(0, 0, 0, 0.3);
+    transition      : box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      border-top-left-radius   : 0px;
+      border-bottom-left-radius: 0px;
+      box-shadow               : inset 3px 0px 0px $primary-color, 0 8px 6px -6px rgba(0, 0, 0, 0.445);
+    }
+  }
+}
+
+.story {
+  padding: 15px 20px;
+
+  @include e(title) {
+    display      : inline-block;
+    color        : $heading-text-color;
+    font-size    : 24px;
+    font-weight  : 500;
+    margin-bottom: 15px;
+    transition   : all 1s ease-in-out;
+    cursor       : pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    svg {
+      width : 18px;
+      height: 18px;
+    }
+  }
+
+  @include e(description) {
+    display    : flex;
+    align-items: center;
+    font-size  : 14px;
+  }
+
+  span {
+    color       : $gray-75;
+    margin-right: 16px;
+    display     : flex;
+    align-items : center;
+
+    svg {
+      margin-right: 5px;
+    }
+
+    @include mq(md) {
+      &:last-child {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+ul {
+  display: flex;
+}
+
+.default {
+  position       : relative;
+  height         : 50vh;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  opacity        : 0.6;
+
+  @include e(body) {
+    text-align: center;
+  }
+}

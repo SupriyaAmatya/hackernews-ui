@@ -1,0 +1,20 @@
+//flex
+@mixin flexCenter($direction) {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  flex-direction : $direction;
+}
+
+//card background image
+@mixin cardImage($items...) {
+  @content;
+  @each $item in $items{
+      &--#{$item}{
+          background-image: url("../../../images/#{$item}.png");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: contain;
+      }
+  }
+}

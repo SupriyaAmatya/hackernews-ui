@@ -1,0 +1,46 @@
+.comment-wrapper {
+  margin-bottom: 10px;
+
+  .comment {
+    padding  : 5px;
+    font-size: 15px;
+
+    @include e(child) {
+      margin-left: 15px;
+      border-left: 3px solid rgb(224, 224, 224);
+      transition : all .1s ease-in-out;
+
+      &:hover {
+        border-left: 3px solid $primary-color;
+      }
+    }
+
+    @include e(by) {
+      font-weight: 500;
+    }
+
+    @include e(text) {
+      margin-left: 8px;
+      margin-top : 5px;
+    }
+
+    @include e(replies){
+      font-weight: normal;
+      font-size: 14px;
+      margin-left: 8px;
+      color: $primary-color;
+      cursor: pointer;
+
+      &:hover{
+        color: darken($color: $primary-color, $amount: 10);
+      }
+    }
+  }
+}
+
+.parent-comments{
+  border: 1px solid rgb(202, 202, 202);
+  border-radius: 5px;
+  margin: 15px 0;
+  padding: 10px;
+}
