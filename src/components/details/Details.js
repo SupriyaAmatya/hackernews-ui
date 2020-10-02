@@ -51,21 +51,32 @@ class Details extends Component {
       >
         <div className="modal__heading story">
           <button onClick={this.closeModal} className="btn btn--close">X</button>
-          <a href={data.url} target="_blank" rel="noopener noreferrer" className="story__title text-center mb-3x">
+          <a
+            href={data.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="story__title text-center mb-3x"
+          >
             {data.title}
             <FiExternalLink width="10" height="10" className="ml-2x" />
           </a>
           <div className="story__description row mx-0x">
-            <span className="story__user col"><FaUser /> {data.by}</span>
-            <span className="story__comments col"><FaComments /> {data.kids ? data.kids.length : '0'} comments</span>
-            <span className="story__points col"><FaStar /> {data.score} points</span>
+            <span className="story__user col">
+              <FaUser /> {data.by}
+            </span>
+            <span className="story__comments col">
+              <FaComments /> {data.kids ? data.kids.length : '0'} comments
+            </span>
+            <span className="story__points col">
+              <FaStar /> {data.score} points
+            </span>
           </div>
         </div>
         <div className="modal__body">
           {data.kids && <h4>{data.kids.length} Comments</h4>}
 
           {data.kids && data.kids.length > 0 ?
-            data.kids.map(id => <Comment id={id} className="parent-comments"/>)
+            data.kids.map(id => <Comment id={id} className="parent-comments" key={id} />)
             : <NoComment />
           }
         </div>

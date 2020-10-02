@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { FaComments, FaUser, FaStar } from 'react-icons/fa';
 import { IoIosTime } from 'react-icons/io'
+import { FaComments, FaUser, FaStar } from 'react-icons/fa';
 
 import API from '../../utils/API';
 import formateDate from '../../utils/formateDate';
@@ -54,10 +56,18 @@ class ListItem extends Component {
                 </Link>
               </div>
               <div className="story__description row mx-0x">
-                <span className="story__comments col"><FaComments /> {data.kids ? data.kids.length : '0'} comments</span>
-                <span className="story__user col"><FaUser /> {data.by}</span>
-                <span className="story__points col"><FaStar /> {data.score} points</span>
-                <span className="story__date col mt-0x-sm mt-1x"><IoIosTime /> {formateDate(data.time)}</span>
+                <span className="story__comments col">
+                  <FaComments /> {data.kids ? data.kids.length : '0'} comments
+                </span>
+                <span className="story__user col">
+                  <FaUser /> {data.by}
+                </span>
+                <span className="story__points col">
+                  <FaStar /> {data.score} points
+                </span>
+                <span className="story__date col mt-0x-sm mt-1x">
+                  <IoIosTime /> {formateDate(data.time)}
+                </span>
               </div>
             </>
           )
@@ -66,6 +76,10 @@ class ListItem extends Component {
       </div>
     );
   }
+}
+
+ListItem.propTypes={
+  id: PropTypes.number,
 }
 
 export default ListItem;

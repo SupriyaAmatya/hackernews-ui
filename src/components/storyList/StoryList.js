@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+
 import API from '../../utils/API';
+import ListItem from './ListItem';
 import Loading from '../loading/Loading';
 import Pagination from '../pagination/Pagination';
-
-import ListItem from './ListItem';
 
 class StoryList extends Component {
   constructor(props) {
@@ -40,6 +40,7 @@ class StoryList extends Component {
     const indexOfLastStory = currentPage * storyPerPage;
     const indexOfFirstStory = indexOfLastStory - storyPerPage;
     const currentStories = storiesList.slice(indexOfFirstStory, indexOfLastStory);
+
     return (
       <div className=" container">
         {this.state.isLoading ? <Loading /> :

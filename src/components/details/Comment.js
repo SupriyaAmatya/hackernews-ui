@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import API from '../../utils/API';
 import { FaUser } from 'react-icons/fa';
@@ -42,26 +43,34 @@ class Comment extends Component {
 
   render() {
     const { data, isLoading, showReplies } = this.state;
+    const moreReplies = <>
+      {data.kids && data.kids.length > 0 ?
+        <span
+          onClick={() => this.setState({ showReplies: !showReplies })}
+          className="comment__replies"
+        >
+          {showReplies ? '[Hide]' :
+            `[${data.kids && data.kids.length > 0 && data.kids.length} more]`
+          }
+        </span>
+        : null
+      }
+    </>
+
     return (
       <div className={this.props.className}>
         {isLoading ? <LoadingSkeleton type='comment' /> :
           <div className="comment-wrapper">
             <div className="comment">
-              <div className="comment__by story__user">
-                <FaUser className="mr-1x" />{data.by}
-                {data.kids && data.kids.length > 0 ?
-                  <span 
-                    onClick={() => this.setState({ showReplies: !showReplies })}
-                    className="comment__replies"
-                  >
-                    {showReplies ? '[Hide]' : 
-                      `[${data.kids && data.kids.length > 0 && data.kids.length} more]`
-                    }
-                  </span>
-                  : null
-                }
-              </div>
-              <div className="comment__text" dangerouslySetInnerHTML={createMarkup(data.text)} />
+              {data.by ?
+                <>
+                  <div className="comment__by story__user">
+                    <FaUser className="mr-1x" />{data.by}
+                    {moreReplies}
+                  </div>
+                  <div className="comment__text" dangerouslySetInnerHTML={createMarkup(data.text)} />
+                </> : null
+              }
             </div>
             {data.kids && data.kids.length > 0 && showReplies ?
               (
@@ -77,6 +86,11 @@ class Comment extends Component {
       </div>
     );
   }
+}
+
+Comment.propTypes = {
+  id: PropTypes.number,
+  comment: PropTypes.string,
 }
 
 export default Comment;

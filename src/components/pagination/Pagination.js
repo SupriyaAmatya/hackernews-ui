@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Pagination = (props) => {
   const { storyPerPage, totalStories, paginate, currentPage, windowSize } = props;
-console.log(totalStories);
+
   const pageNumbers = [];
   
   const pages = Math.ceil(totalStories / storyPerPage);
@@ -40,8 +41,9 @@ console.log(totalStories);
             <Link to="/">{'<'} Prev</Link>
           </li> : ''}
         {pageNumbers.map(number => (
-          <li className={`page-item ${currentPage === number ? 'active-page' : ''}`}
+          <li 
             key={number}
+            className={`page-item ${currentPage === number ? 'active-page' : ''}`}
             onClick={() => paginate(number)}
           >
             <Link to='/' className="page-link"> {number} </Link>
@@ -61,17 +63,28 @@ console.log(totalStories);
         {currentPage > 1 ? 
           <li className="page-item" onClick={() => paginate(currentPage - 1)}>
             <Link to="/">{'<'} Prev</Link>
-          </li> : ''}
+          </li> : ''
+        }
         <li className="page" >
           {currentPage} of {pages}
         </li>
         {currentPage < pages ? 
           <li className="page-item" onClick={() => paginate(currentPage + 1)}>
             <Link to="/"> Next {'>'}</Link>
-          </li> : ''}
+          </li>
+          : ''
+        }
       </ul>
     </>
   )
+}
+
+Pagination.propTypes={
+  storyPerPage: PropTypes.number,
+  totalStories: PropTypes.number, 
+  paginate: PropTypes.func, 
+  currentPage: PropTypes.number, 
+  windowSize: PropTypes.number,
 }
 
 export default Pagination
