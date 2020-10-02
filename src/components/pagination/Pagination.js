@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Pagination = (props) => {
-  const { storyPerPage, totalStories, paginate, currentPage, windowSize } = props;
+  const { storyPerPage = 10, totalStories, paginate, currentPage, windowSize = 5 } = props;
 
   const pageNumbers = [];
   
