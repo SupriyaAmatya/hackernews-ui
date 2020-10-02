@@ -12,6 +12,7 @@ class Comment extends Component {
     this.state = {
       data: {},
       isLoading: true,
+      showReplies: false,
     }
   }
 
@@ -29,27 +30,40 @@ class Comment extends Component {
   getComments = async (id) => {
     await API.get(`/item/${id}.json`)
       .then(res => {
-        this.setState((prevState) => { 
-          return { 
-            ...prevState, 
-            data: res.data, 
-            isLoading: false 
+        this.setState((prevState) => {
+          return {
+            ...prevState,
+            data: res.data,
+            isLoading: false
           }
         })
       })
   }
 
   render() {
-    const { data, isLoading } = this.state;
+    const { data, isLoading, showReplies } = this.state;
     return (
       <div className={this.props.className}>
         {isLoading ? <LoadingSkeleton type='comment' /> :
           <div className="comment-wrapper">
             <div className="comment">
-              <div className="comment__by story__user"><FaUser className="mr-1x" />{data.by}</div>
+              <div className="comment__by story__user">
+                <FaUser className="mr-1x" />{data.by}
+                {data.kids && data.kids.length > 0 ?
+                  <span 
+                    onClick={() => this.setState({ showReplies: !showReplies })}
+                    className="comment__replies"
+                  >
+                    {showReplies ? '[Hide]' : 
+                      `[${data.kids && data.kids.length > 0 && data.kids.length} more]`
+                    }
+                  </span>
+                  : null
+                }
+              </div>
               <div className="comment__text" dangerouslySetInnerHTML={createMarkup(data.text)} />
             </div>
-            {data.kids && data.kids.length > 0 ?
+            {data.kids && data.kids.length > 0 && showReplies ?
               (
                 <div className="comment__child">
                   {data.kids.map((id, key) => (
